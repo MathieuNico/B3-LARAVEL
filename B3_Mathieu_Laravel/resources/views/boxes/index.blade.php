@@ -4,15 +4,14 @@
 
 <div class="container">
     <div class="col-md-12">
-        <div class="d-flex justify-content-between">
-          <h1>Liste des Boxes</h1>
+        <div class="d-flex justify-content-between mt-3">
           <a href="{{route('boxes.create')}}" class="btn btn-success">Créer une boxe</a>
         </div>
      
     
     
     
-      <table class="table table-hover- table-bordered">
+      <table class="table table-hover- table-bordered mt-3">
           <thead>
             <tr>
               <th scope="col" class="text-center">N°</th>
