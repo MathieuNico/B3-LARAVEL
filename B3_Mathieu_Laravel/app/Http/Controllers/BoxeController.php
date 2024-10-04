@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Boxe;
+use App\Models\Locataire;
 
 class BoxeController extends Controller
 {
@@ -16,7 +17,9 @@ class BoxeController extends Controller
 
     public function create()
     {   
-        return view('boxes.create');
+        return view('boxes.create', [
+            'locataires' => Locataire::all()->where('user_id', auth()->id())
+        ]);
     }
 
     public function store(Request $request)
@@ -29,7 +32,7 @@ class BoxeController extends Controller
         $boxes->postal_code = $request->get('postal_code');
         $boxes->country = $request->get('country');
         $boxes->user_id = auth()->id();
-
+        $boxes->locataire_id = $request->get('locataire_id');
         $boxes->save();
 
         return redirect()->route('boxes.index');

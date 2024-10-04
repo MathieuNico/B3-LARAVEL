@@ -31,6 +31,7 @@ class LocataireController extends Controller
         $locataire->user_id = auth()->user()->id;
 
         $locataire->save();
+        
 
         return redirect()->route('locataires.index');
 
