@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoxeController;
+use App\Http\Controllers\LocataireController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/boxes/{id}', [BoxeController::class, 'destroy'])->name('boxes.destroy');
     Route::get('/boxes/{id}/edit', [BoxeController::class, 'edit'])->name('boxes.edit');
     Route::put('/boxes/{id}', [BoxeController::class, 'update'])->name('boxes.update');
+    Route::get('/locataires', [LocataireController::class, 'index'])->name('locataires.index');
+    Route::get('/locataires/create', [LocataireController::class, 'create'])->name('locataires.create');
+    Route::post('/locataires/store', [LocataireController::class, 'store'])->name('locataires.store');
 });
 
 require __DIR__.'/auth.php';
