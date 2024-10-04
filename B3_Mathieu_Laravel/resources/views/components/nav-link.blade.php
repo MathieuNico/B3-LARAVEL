@@ -30,7 +30,7 @@ $classes = ($active ?? false)
             <a class="nav-link" href="{{route('boxes.index')}}">Boxes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Locataires</a>
+            <a class="nav-link" href="{{route('locataires.index')}}">Locataires</a>
           </li>
         </ul>
     
