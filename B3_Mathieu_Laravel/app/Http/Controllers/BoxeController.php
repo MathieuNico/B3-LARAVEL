@@ -10,7 +10,7 @@ class BoxeController extends Controller
     public function index()
     {
         return view('boxes.index', [
-            'boxes' => boxe::all()->where('user_id', auth()->id())
+            'boxes' => Boxe::all()->where('user_id', auth()->id())
         ]);
     }
 
@@ -31,6 +31,38 @@ class BoxeController extends Controller
         $boxes->user_id = auth()->id();
 
         $boxes->save();
+
+        return redirect()->route('boxes.index');
+    }
+
+    public function destroy($id)
+    {
+        $boxe = Boxe::findOrFail($id);
+        $boxe->delete();
+
+        return redirect()->route('boxes.index');
+    }
+
+    public function edit($id)
+    {
+        $boxe = Boxe::findOrFail($id);
+
+        return view('boxes.edit', [
+            'boxe' => $boxe
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $boxe = Boxe::findOrFail($id);
+
+        $boxe->name = $request->get('name');
+        $boxe->address = $request->get('address');
+        $boxe->city = $request->get('city');
+        $boxe->postal_code = $request->get('postal_code');
+        $boxe->country = $request->get('country');
+
+        $boxe->save();
 
         return redirect()->route('boxes.index');
     }
