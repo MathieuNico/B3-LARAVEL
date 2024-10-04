@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/locataires', [LocataireController::class, 'index'])->name('locataires.index');
     Route::get('/locataires/create', [LocataireController::class, 'create'])->name('locataires.create');
     Route::post('/locataires/store', [LocataireController::class, 'store'])->name('locataires.store');
+    Route::delete('/locataires/{id}', [LocataireController::class, 'destroy'])->name('locataires.destroy');
+    Route::get('/locataires/{id}/edit', [LocataireController::class, 'edit'])->name('locataires.edit');
+    Route::put('/locataires/{id}', [LocataireController::class, 'update'])->name('locataires.update');
 });
 
 require __DIR__.'/auth.php';
