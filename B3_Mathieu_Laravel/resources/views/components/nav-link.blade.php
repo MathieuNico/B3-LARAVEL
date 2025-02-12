@@ -25,7 +25,7 @@
             <a class="nav-link" href="{{route('locataires.index')}}">Locataires</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('contrats.create')}}">Contrats</a>
+            <a class="nav-link" href="{{route('templatecontrats.index')}}">Template Contrats</a>
           </li>
         </ul>
     

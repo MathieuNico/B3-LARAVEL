@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoxeController;
 use App\Http\Controllers\LocataireController;
 use App\Http\Controllers\ContratController;
+use App\Http\Controllers\TemplateContratController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/locataires/{id}/edit', [LocataireController::class, 'edit'])->name('locataires.edit');
     Route::put('/locataires/{id}', [LocataireController::class, 'update'])->name('locataires.update');
     Route::get('/contrats/create', [ContratController::class, 'create'])->name('contrats.create');
+    Route::get('/templatecontrats/create', [TemplateContratController::class, 'create'])->name('templatecontrats.create');
+    Route::post('/templatecontrats/store', [TemplateContratController::class, 'store'])->name('templatecontrats.store');
+    Route::get('/templatecontrats', [TemplateContratController::class, 'index'])->name('templatecontrats.index');
+    Route::delete('/templatecontrats/{id}', [TemplateContratController::class, 'destroy'])->name('templatecontrats.destroy');
+    Route::get('/templatecontrats/{id}/edit', [TemplateContratController::class, 'edit'])->name('templatecontrats.edit');
+    Route::put('/templatecontrats/{id}', [TemplateContratController::class, 'update'])->name('templatecontrats.update');
 });
+
 
 require __DIR__.'/auth.php';

@@ -23,6 +23,7 @@
               <th scope="col" class="text-center">Locataire</th>
               <th scope="col" class="text-center">Supprimer</th>
               <th scope="col" class="text-center">Modifier</th>
+              <th scope="col" class="text-center">Contrat</th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +43,7 @@
                     <td class="text-center"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></td>
                   </form>
                   <td class="text-center"><a href="{{route('boxes.edit', $box->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td class="text-center"><a href="{{route('contrats.create', $box->id)}}" class="btn btn-primary">Créer un contrat</a></td>
               </tr>
               @endforeach
           </tbody>

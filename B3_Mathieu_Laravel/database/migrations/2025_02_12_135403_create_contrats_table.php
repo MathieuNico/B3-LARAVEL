@@ -11,6 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('template_contrats', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('name');
+            $table->json('content');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
         Schema::create('contrats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -22,8 +31,8 @@ return new class extends Migration
             $table->unsignedBigInteger('locataire_id')->nullable();
             $table->foreign('locataire_id')->references('id')->on('locataires');
             $table->unsignedBigInteger('templatecontrat_id')->nullable();
-            $table->foreign('templatecontrat_id')->references('id')->on('templatecontrats');
-            
+            $table->foreign('templatecontrat_id')->references('id')->on('template_contrats');
+
         });
     }
 
@@ -32,6 +41,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('template_contrats');
         Schema::dropIfExists('contrats');
     }
 };
