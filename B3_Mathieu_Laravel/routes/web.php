@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoxeController;
 use App\Http\Controllers\LocataireController;
+use App\Http\Controllers\ContratController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/locataires/{id}', [LocataireController::class, 'destroy'])->name('locataires.destroy');
     Route::get('/locataires/{id}/edit', [LocataireController::class, 'edit'])->name('locataires.edit');
     Route::put('/locataires/{id}', [LocataireController::class, 'update'])->name('locataires.update');
+    Route::get('/contrats/create', [ContratController::class, 'create'])->name('contrats.create');
 });
 
 require __DIR__.'/auth.php';
