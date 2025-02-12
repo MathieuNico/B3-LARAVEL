@@ -51,7 +51,8 @@ class BoxeController extends Controller
         $boxe = Boxe::findOrFail($id);
 
         return view('boxes.edit', [
-            'boxe' => $boxe
+            'boxe' => $boxe,
+            'locataires' => Locataire::all()->where('user_id', auth()->id())
         ]);
     }
 
@@ -64,6 +65,7 @@ class BoxeController extends Controller
         $boxe->city = $request->get('city');
         $boxe->postal_code = $request->get('postal_code');
         $boxe->country = $request->get('country');
+        $boxe->locataire_id = $request->get('locataire_id');
 
         $boxe->save();
 
