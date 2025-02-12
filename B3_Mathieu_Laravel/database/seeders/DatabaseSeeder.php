@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Locataire;
+use App\Models\Boxe;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,12 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'firstname' => 'Test User',
-            'lastname' => 'Test User',
-            'email' => 'test@example.com',
-            'address' => '1 rue de la Paix',
-            'phone' => '0123456789',
-        ]);
+        User::factory(10)->create();
+
+        Locataire::factory(10)->create();
+
+        Boxe::factory(10)->create();
     }
 }
