@@ -5,6 +5,8 @@
 
 <link rel="canonical" href="https://icons.getbootstrap.com/">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css"> <!-- Style moderne -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,6 +29,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('templatecontrats.index')}}">Template Contrats</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('contrats.create')}}">Contrats</a>
+          </li>
         </ul>
     
       </div>
@@ -38,3 +43,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <script src="https://kit.fontawesome.com/bc49ec5b07.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

@@ -23,9 +23,12 @@ return new class extends Migration
         Schema::create('contrats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
             $table->date('start_date');
             $table->date('end_date');
-            $table->float('price');
+            $table->json('content');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('boxe_id')->nullable();
             $table->foreign('boxe_id')->references('id')->on('boxes');
             $table->unsignedBigInteger('locataire_id')->nullable();

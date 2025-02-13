@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('postal_code');
             $table->string('country');
+            $table->float('price');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('locataire_id')->nullable();

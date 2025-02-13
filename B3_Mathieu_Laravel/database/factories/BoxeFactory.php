@@ -22,7 +22,8 @@ class BoxeFactory extends Factory
             'city' => fake()->city(),
             'postal_code' => fake()->postcode(),
             'country' => fake()->country(),
-            'user_id' => random_int(1, 2)
+            'price' => fake()->randomFloat(2, 0, 1000),
+            'user_id' => 1
         ];
     }
 }

@@ -23,7 +23,7 @@ class LocataireFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'city' => fake()->city(),
-            'user_id' => random_int(1, 2)
+            'user_id' => 1
         ];
     }
 }

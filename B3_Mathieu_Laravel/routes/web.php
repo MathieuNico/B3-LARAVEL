@@ -31,13 +31,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/locataires/{id}', [LocataireController::class, 'destroy'])->name('locataires.destroy');
     Route::get('/locataires/{id}/edit', [LocataireController::class, 'edit'])->name('locataires.edit');
     Route::put('/locataires/{id}', [LocataireController::class, 'update'])->name('locataires.update');
-    Route::get('/contrats/create', [ContratController::class, 'create'])->name('contrats.create');
     Route::get('/templatecontrats/create', [TemplateContratController::class, 'create'])->name('templatecontrats.create');
     Route::post('/templatecontrats/store', [TemplateContratController::class, 'store'])->name('templatecontrats.store');
     Route::get('/templatecontrats', [TemplateContratController::class, 'index'])->name('templatecontrats.index');
     Route::delete('/templatecontrats/{id}', [TemplateContratController::class, 'destroy'])->name('templatecontrats.destroy');
     Route::get('/templatecontrats/{id}/edit', [TemplateContratController::class, 'edit'])->name('templatecontrats.edit');
     Route::put('/templatecontrats/{id}', [TemplateContratController::class, 'update'])->name('templatecontrats.update');
+    Route::get('/contrats/create', [ContratController::class, 'create'])->name('contrats.create');
+    Route::post('/contrats/store', [ContratController::class, 'store'])->name('contrats.store');
+    Route::get('/contrats', [ContratController::class, 'index'])->name('contrats.index');
+    Route::delete('/contrats/{id}', [ContratController::class, 'destroy'])->name('contrats.destroy');
+    Route::get('/contrats/{id}/edit', [ContratController::class, 'edit'])->name('contrats.edit');
+    Route::put('/contrats/{id}', [ContratController::class, 'update'])->name('contrats.update');
 });
 
 

@@ -13,8 +13,10 @@ class Contrat extends Model
         'end_date',
         'price',
         'boxe_id',
+        'content',
         'locataire_id',
-        'templatecontrat_id'
+        'templatecontrat_id',
+        'user_id'
     ];
 
     public function templatecontrat(){
@@ -27,5 +29,9 @@ class Contrat extends Model
 
     public function locataire(){
         return $this->belongsTo(Locataire::class, 'locataire_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
