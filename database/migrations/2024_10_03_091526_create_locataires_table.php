@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->string('numberbank')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
         });
