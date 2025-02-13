@@ -30,7 +30,7 @@
             <a class="nav-link" href="{{route('templatecontrats.index')}}">Template Contrats</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('contrats.create')}}">Contrats</a>
+            <a class="nav-link" href="{{route('contrats.index')}}">Contrats</a>
           </li>
         </ul>
     
@@ -44,3 +44,4 @@
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <script src="https://kit.fontawesome.com/bc49ec5b07.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
