@@ -40,18 +40,22 @@ class ContratController extends Controller
         $locataire = Locataire::find($request->get('locataire_id'));
         $boxe = Boxe::find($request->get('boxe_id'));
         $templatecontrat = TemplateContrat::find($request->get('templatecontrat_id'));
-        $templateContent = $templatecontrat->content;
 
+        
+        $templateContent = json_decode($templatecontrat->content, true);
+
+        
         if (is_array($templateContent) && isset($templateContent['ops'])) {
-            $text = collect($templateContent['ops'])->pluck('insert')->implode('');
-        } else {
-            $text = $templateContent; // Cas où c'est déjà une chaîne
+            
+            foreach ($templateContent['ops'] as &$op) {
+                if (isset($op['insert'])) {
+                    $op['insert'] = str_replace("!Nom!", $locataire->lastname, $op['insert']);
+                    $op['insert'] = str_replace("!Prenom!", $locataire->firstname, $op['insert']);
+                    $op['insert'] = str_replace("!Mail!", $locataire->mail, $op['insert']);
+                }
+            }
         }
 
-        $text = str_replace("!Nom!", $locataire->lastname, $text);
-        $text = str_replace("!Prenom!", $locataire->firstname, $text);
-        $text = str_replace("!Mail!", $locataire->mail, $text);
-    
         $contrat = new Contrat();
         $contrat->start_date = $request->get('start_date');
         $contrat->end_date = $request->get('end_date');
@@ -60,13 +64,18 @@ class ContratController extends Controller
         $contrat->boxe_id = $request->get('boxe_id');
         $contrat->user_id = auth()->id();
         $contrat->templatecontrat_id = $request->get('templatecontrat_id');
-        $contrat->content = json_encode($text);
+        
+        
+        $contrat->content = json_encode($templateContent);
+
         $contrat->save();
+
         return response()->json([
             'message' => 'Contrat créé avec succès',
             'contrat' => $contrat
         ]);
     }
+
 
     /**
      * Display the specified resource.
@@ -77,13 +86,16 @@ class ContratController extends Controller
             'contrat' => Contrat::findOrFail($id)
         ]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        return view('contrats.edit', [
+            'contrats' => Contrat::findOrFail($id),
+        ]);
     }
 
     /**
@@ -99,6 +111,9 @@ class ContratController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contrat = Contrat::findOrFail($id);
+        $contrat->delete();
+
+        return redirect()->route('contrats.index');
     }
 }
