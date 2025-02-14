@@ -14,6 +14,9 @@ class Locataire extends Model
         'firstname',
         'mail',
         'phone',
+        'postal_code',
+        'country',
+        'numberbank',
         'address',
         'city',
         'user_id'
@@ -22,5 +25,10 @@ class Locataire extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function contrats()
+    {
+        return $this->hasMany(Contrat::class);
     }
 }

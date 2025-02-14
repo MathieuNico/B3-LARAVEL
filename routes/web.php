@@ -6,6 +6,7 @@ use App\Http\Controllers\BoxeController;
 use App\Http\Controllers\LocataireController;
 use App\Http\Controllers\ContratController;
 use App\Http\Controllers\TemplateContratController;
+use App\Http\Controllers\BillController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,6 +45,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/contrats/{id}/edit', [ContratController::class, 'edit'])->name('contrats.edit');
     Route::put('/contrats/{id}', [ContratController::class, 'update'])->name('contrats.update');
     Route::get('/contrats/{id}/show', [ContratController::class, 'show'])->name('contrats.show');
+    Route::get('/bills/create', [BillController::class, 'create'])->name('bills.create');
+    Route::post('/bills/store', [BillController::class, 'store'])->name('bills.store');
+    Route::get('/bills', [BillController::class, 'index'])->name('bills.index');
+    Route::delete('/bills/{id}', [BillController::class, 'destroy'])->name('bills.destroy');
+    Route::get('/bills/{id}/edit', [BillController::class, 'edit'])->name('bills.edit');
+    Route::put('/bills/{id}', [BillController::class, 'update'])->name('bills.update');
+    Route::get('/bills/{id}/show', [BillController::class, 'show'])->name('bills.show');
 });
 
 

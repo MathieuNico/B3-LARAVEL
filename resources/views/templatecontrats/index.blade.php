@@ -9,6 +9,8 @@
             <tr>
               <th scope="row" class="text-center">N°</th>
               <th scope="col" class="text-center">Nom</th>
+              <th scope="row" class="text-center">Supprimer</th>
+              <th scope="row" class="text-center">Modifier</th>
             </tr>
           </thead>
           <tbody>

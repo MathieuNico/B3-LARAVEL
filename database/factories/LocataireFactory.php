@@ -23,6 +23,9 @@ class LocataireFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'city' => fake()->city(),
+            'postal_code' => fake()->postcode(),
+            'country' => fake()->country(),
+            'numberbank' => fake()->iban(),
             'user_id' => 1
         ];
     }

@@ -16,9 +16,10 @@ class ContratController extends Controller
     public function index()
     {
         return view('contrats.index', [
-            'contrats' => Contrat::all()->where('user_id',auth()->id())
+            'contrats' => Contrat::with('locataire','boxe')->where('user_id', auth()->id())->get()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -52,6 +53,18 @@ class ContratController extends Controller
                     $op['insert'] = str_replace("!Nom!", $locataire->lastname, $op['insert']);
                     $op['insert'] = str_replace("!Prenom!", $locataire->firstname, $op['insert']);
                     $op['insert'] = str_replace("!Mail!", $locataire->mail, $op['insert']);
+                    $op['insert'] = str_replace("!Telephone!", $locataire->phone, $op['insert']);
+                    $op['insert'] = str_replace("!Adresse!", $locataire->address, $op['insert']);
+                    $op['insert'] = str_replace("!CodePostal!", $locataire->postal_code, $op['insert']);
+                    $op['insert'] = str_replace("!Ville!", $locataire->city, $op['insert']);
+                    $op['insert'] = str_replace("!Pays!", $locataire->country, $op['insert']);
+                    $op['insert'] = str_replace("!BoxNom!", $boxe->name, $op['insert']);
+                    $op['insert'] = str_replace("!BoxPrix!", $boxe->price, $op['insert']);
+                    $op['insert'] = str_replace("!RIB!", $locataire->numberbank, $op['insert']);
+                    $op['insert'] = str_replace("!BoxAdresse!", $boxe->address, $op['insert']);
+                    $op['insert'] = str_replace("!BoxCodePostal!", $boxe->postal_code, $op['insert']);
+                    $op['insert'] = str_replace("!BoxVille!", $boxe->city, $op['insert']);
+                    $op['insert'] = str_replace("!BoxPays!", $boxe->country, $op['insert']);
                 }
             }
         }

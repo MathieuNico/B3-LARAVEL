@@ -19,6 +19,10 @@
         <input type="text" class="form-control" name="address" placeholder="Entrer une adresse">
       </div>
       <div class="mb-3">
+        <label for="Prix" class="form-label">Prix</label>
+        <input type="text" class="form-control" name="price" placeholder="Entrer le prix du box">
+      </div>
+      <div class="mb-3">
         <label for="Code Postal"class="form-label">Code Postal</label>
         <input type="text" class="form-control" name="postal_code" placeholder="Entrer un code postal">
       </div>

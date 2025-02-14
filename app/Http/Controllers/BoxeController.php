@@ -31,6 +31,7 @@ class BoxeController extends Controller
         $boxes->city = $request->get('city');
         $boxes->postal_code = $request->get('postal_code');
         $boxes->country = $request->get('country');
+        $boxes->price = $request->get('price');
         $boxes->user_id = auth()->id();
         $boxes->locataire_id = $request->get('locataire_id');
         $boxes->save();
@@ -65,6 +66,7 @@ class BoxeController extends Controller
         $boxe->city = $request->get('city');
         $boxe->postal_code = $request->get('postal_code');
         $boxe->country = $request->get('country');
+        $boxe->price = $request->get('price');
         $boxe->locataire_id = $request->get('locataire_id');
 
         $boxe->save();
