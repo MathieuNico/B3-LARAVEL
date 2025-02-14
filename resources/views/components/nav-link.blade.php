@@ -32,6 +32,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('contrats.index')}}">Contrats</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('bills.index')}}">Factures</a>
+          </li>
         </ul>
     
       </div>

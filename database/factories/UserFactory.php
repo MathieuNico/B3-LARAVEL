@@ -24,10 +24,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'lastname' => 'test',
-            'firstname' => 'test',
-            'email' => 'test@test',
-            'phone' => '08920102034',
+            'lastname' => 'test2',
+            'firstname' => 'test2',
+            'email' => 'test@teste',
+            'phone' => '089201020334',
             'address' => '2rue de la paix',
             'email_verified_at' => now(),
             'password' => 'test',

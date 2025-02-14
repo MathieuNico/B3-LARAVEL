@@ -15,6 +15,7 @@ class Boxe extends Model
         'city',
         'postal_code',
         'country',
+        'price',
         'user_id',
         'locataire_id'
     ];
@@ -27,5 +28,10 @@ class Boxe extends Model
     public function locataire()
     {
         return $this->belongsTo(Locataire::class, 'locataire_id');
+    }
+
+    public function contrats()
+    {
+        return $this->hasMany(Contrat::class);
     }
 }

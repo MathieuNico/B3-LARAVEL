@@ -28,6 +28,13 @@
           </div>
         </div>
         <div class="mb-3">
+          <label for="Prix" class="form-label">Prix</label>
+          <div class="input-group mb-2">
+            <div class="input-group-text">€</div>
+            <input type="text" class="form-control" name="price" placeholder="Entrer le prix du box" value={{$boxe->price}}>
+          </div>
+        </div>
+        <div class="mb-3">
           <label for="Code Postal" class="form-label">Code Postal</label>
           <div class="input-group mb-2">
               <div class="input-group-text"><i class="fa-solid fa-signs-post"></i></div>
@@ -44,10 +51,10 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="Pays" class="form-label">Pays</label>
+          <label for="Pays" class="form-label">Locataire</label>
           <div class="input-group mb-2">
             <div class="input-group-text">
-                <i class="fa-solid fa-earth-americas"></i>
+              <i class="fa-solid fa-person"></i>
             </div>
             <select class="form-select" name="locataire_id">
               <option disabled>Choose...</option>

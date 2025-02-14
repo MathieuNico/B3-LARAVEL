@@ -27,6 +27,9 @@ class LocataireController extends Controller
         $locataire->mail = $request->get('mail');
         $locataire->phone = $request->get('phone');
         $locataire->address = $request->get('address');
+        $locataire->postal_code = $request->get('postal_code');
+        $locataire->country = $request->get('country');
+        $locataire->numberbank = $request->get('numberbank');
         $locataire->city = $request->get('city');
         $locataire->user_id = auth()->user()->id;
 
@@ -63,6 +66,9 @@ class LocataireController extends Controller
         $locataire->phone = $request->get('phone');
         $locataire->address = $request->get('address');
         $locataire->city = $request->get('city');
+        $locataire->postal_code = $request->get('postal_code');
+        $locataire->country = $request->get('country');
+        $locataire->numberbank = $request->get('numberbank');
         $locataire->user_id = auth()->user()->id;
         $locataire->save();
         

@@ -49,6 +49,27 @@
             <input type="text" class="form-control" name="city" placeholder="Entrer la ville">
           </div>
       </div>
+      <div class="mb-3">
+          <label for="Code Postal" class="form-label">Code Postal</label>
+          <div class="input-group mb-2">
+            <div class="input-group-text"><i class="fa-solid fa-city"></i></div>
+            <input type="text" class="form-control" name="zip" placeholder="Entrer le code postal">
+          </div>
+      </div>
+      <div class="mb-3">
+          <label for="Pays" class="form-label">Pays</label>
+          <div class="input-group mb-2">
+            <div class="input-group-text"><i class="fa-solid fa-city"></i></div>
+            <input type="text" class="form-control" name="country" placeholder="Entrer le pays">
+          </div>
+      </div>
+      <div class="mb-3">
+        <label for="Numéro de banque" class="form-label">Numéro de banque</label>
+        <div class="input-group mb-2">
+          <div class="input-group-text"><i class="fa-solid fa-credit-card"></i></div>
+          <input type="text" class="form-control" name="numberbank" placeholder="Entrer le numéro de banque">
+        </div>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
