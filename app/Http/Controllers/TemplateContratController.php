@@ -45,7 +45,9 @@ class TemplateContratController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('templatecontrats.show', [
+            'template_contrats' => TemplateContrat::findOrFail($id)
+        ]);
     }
 
     /**

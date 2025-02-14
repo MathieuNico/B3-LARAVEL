@@ -3,7 +3,7 @@
 </x-nav-link>
 
 <div class="container">
-    <h2>{{$contrat->name}}</h2>
+    <h2>Nom du contrat: {{$contrat->name}}</h2>
 
     <!-- Formulaire pour envoyer le modèle -->
         <div id="editor-container"></div>

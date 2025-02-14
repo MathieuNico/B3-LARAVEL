@@ -41,7 +41,7 @@ class ContratController extends Controller
         $locataire = Locataire::find($request->get('locataire_id'));
         $boxe = Boxe::find($request->get('boxe_id'));
         $templatecontrat = TemplateContrat::find($request->get('templatecontrat_id'));
-
+        $boxe->locataire_id = $locataire->id;
         
         $templateContent = json_decode($templatecontrat->content, true);
 
@@ -82,11 +82,9 @@ class ContratController extends Controller
         $contrat->content = json_encode($templateContent);
 
         $contrat->save();
+        $boxe->save();
 
-        return response()->json([
-            'message' => 'Contrat créé avec succès',
-            'contrat' => $contrat
-        ]);
+        return redirect()->route('contrats.index');
     }
 
 

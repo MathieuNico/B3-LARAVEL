@@ -34,7 +34,7 @@ return new class extends Migration
             $table->unsignedBigInteger('locataire_id')->nullable();
             $table->foreign('locataire_id')->references('id')->on('locataires');
             $table->unsignedBigInteger('templatecontrat_id')->nullable();
-            $table->foreign('templatecontrat_id')->references('id')->on('template_contrats');
+            $table->foreign('templatecontrat_id')->references('id')->on('template_contrats')->constrained('template_contrats')->nullOnDelete();;
 
         });
     }

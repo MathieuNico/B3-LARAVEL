@@ -16,6 +16,7 @@
               <th scope="col" class="text-center">Boxe</th>
               <th scope="row" class="text-center">Supprimer</th>
               <th scope="row" class="text-center">Modifier</th>
+              <th scope="row" class="text-center">Voir</th>
               
             </tr>
           </thead>
@@ -33,6 +34,7 @@
                     <td class="text-center"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></td>
                   </form>
                   <td class="text-center"><a href="{{route('contrats.edit', $contrat->id)}}"class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td class="text-center"><a href="{{route('contrats.show', $contrat->id)}}" class="btn btn-info"><i class="bi bi-eye"></i></a></td>
               </tr>
               @endforeach
           </tbody>
