@@ -64,7 +64,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/bills/store', [BillController::class, 'store'])->name('bills.store');
     Route::put('/bills/{id}', [BillController::class, 'update'])->name('bills.update');
     Route::delete('/bills/{id}', [BillController::class, 'destroy'])->name('bills.destroy');
+
+    // Impots
+    Route::get('/tax/index',[TaxController::class,'index'])->name('tax.index');
 });
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';
