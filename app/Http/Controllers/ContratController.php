@@ -7,7 +7,7 @@ use App\Models\Contrat;
 use App\Models\Locataire;
 use App\Models\Boxe;
 use App\Models\TemplateContrat;
-
+use Barryvdh\DomPDF\Facade\Pdf; 
 class ContratController extends Controller
 {
     /**
@@ -126,5 +126,17 @@ class ContratController extends Controller
         $contrat->delete();
 
         return redirect()->route('contrats.index');
+    }
+
+
+    public function export($id){
+        // Récupérer le contrat avec les relations nécessaires
+    $contrat = Contrat::with('locataire')->findOrFail($id);
+
+    // Charger la vue avec les données
+    $pdf = Pdf::loadView('contrats.pdf', compact('contrat'));
+
+    // Télécharger le fichier PDF
+    return $pdf->download("contrat_{$contrat->id}.pdf");
     }
 }
