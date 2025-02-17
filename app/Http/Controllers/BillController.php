@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bills;
 use App\Models\Contrat;
+use App\Models\TemplateContrat;
+use App\Models\Locataire;
+use App\Models\Boxe;
+use Carbon\Carbon;
 
 class BillController extends Controller
 {
@@ -25,15 +29,27 @@ class BillController extends Controller
      */
     public function create()
     {
-        //
+        return view('bills.create', [
+            'contrats' => Contrat::all()->where('user_id', auth()->id()),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        
+    {   
+        $contrat = Contrat::find($request->get('contrat_id'));
+        $current_date = Carbon::now();
+        $bill = new Bills();
+        $bill->name = $request->get('name');
+        $bill->payment_date = now();
+        $bill->paiement_montant = $request->get('monthly_price');
+        $bill->period_number =  Carbon::parse($contrat->start_date)->diffInmonths(now());
+        $bill->contrat_id = $contrat->id;
+        $bill->save();
+        return redirect()->route('bills.index');
+
     }
 
     /**
@@ -41,7 +57,10 @@ class BillController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $bill = Bill::findOrFail($id);
+        $bill->delete();
+
+        return redirect()->route('bills.index');
     }
 
     /**
@@ -65,6 +84,6 @@ class BillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }

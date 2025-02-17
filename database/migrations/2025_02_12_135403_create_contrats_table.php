@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->json('content');
+            $table->float('monthly_price');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('boxe_id')->nullable();

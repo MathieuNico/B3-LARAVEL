@@ -3,15 +3,19 @@
 
 <div class="container">
     <div class="col-md-12">
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{{route('bills.create')}}" class="btn btn-success">Créer une facture</a>
+          </div>
         <table class="table table-hover- table-bordered mt-3">
             <thead>
             <tr>
                 <th scope="row" class="text-center">N°</th>
                 <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Supprimer</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($bills as $bill)
+                @foreach ($bills as $bill)  
                 @csrf
                 <tr>
                     <th scope="row" class="text-center">{{$bill->id}}</th>
@@ -21,7 +25,6 @@
                     @method('DELETE')
                     <td class="text-center"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></td>
                     </form>
-                    <td class="text-center"><a href="{{route('contrats.edit', $bill->id)}}"class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

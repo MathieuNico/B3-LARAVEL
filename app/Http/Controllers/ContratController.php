@@ -74,6 +74,7 @@ class ContratController extends Controller
         $contrat->end_date = $request->get('end_date');
         $contrat->name = $request->get('name');
         $contrat->locataire_id = $request->get('locataire_id');
+        $contrat->monthly_price = $request->get('monthly_price');
         $contrat->boxe_id = $request->get('boxe_id');
         $contrat->user_id = auth()->id();
         $contrat->templatecontrat_id = $request->get('templatecontrat_id');
@@ -84,7 +85,7 @@ class ContratController extends Controller
         $contrat->save();
         $boxe->save();
 
-        return redirect()->route('contrats.index');
+        return redirect()->route('contrats.index'); 
     }
 
 
