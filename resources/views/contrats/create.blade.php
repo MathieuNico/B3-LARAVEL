@@ -12,7 +12,8 @@
             <div class="input-group mb-2">
               <div class="input-group-text"><i class="fa-solid fa-person"></i></div>
               <input type="text" class="form-control" name="name" placeholder="Entrer un nom de contrat">
-            </div>
+        </div>
+            
         <div class="mb-3">
             <label for="Nom" class="form-label">Nom</label>
             <div class="input-group mb-2">
@@ -70,6 +71,12 @@
               <span class="input-group-text"><i class="bi bi-calendar-event"></i></span> <!-- Icône calendrier -->
           </div>
         </div>
+        <div class="mb-3">
+          <label for="Prix par mois" class="form-label">Prix par mois</label>
+          <div class="input-group mb-2">
+            <div class="input-group-text"><i class="fa-solid fa-person"></i></div>
+            <input type="text" class="form-control" name="monthly_price" placeholder="Entrer un prix par mois">
+      </div>
       
         <div class="mb-3">
           <label for="Adresse" class="form-label">Boxe</label>

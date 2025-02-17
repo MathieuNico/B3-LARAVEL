@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('payment_date');
             $table->float('paiement_montant');
-            $table->integer('period_number');
+            $table->date('period_number');
             $table->unsignedBigInteger('contrat_id');
             $table->foreign('contrat_id')->references('id')->on('contrats');
         });

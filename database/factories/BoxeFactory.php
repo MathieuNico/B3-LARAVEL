@@ -17,7 +17,7 @@ class BoxeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),  
+            'name' => fake()->word(),  
             'address' => fake()->address(),
             'city' => fake()->city(),
             'postal_code' => fake()->postcode(),

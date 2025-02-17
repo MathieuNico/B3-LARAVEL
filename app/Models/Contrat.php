@@ -14,6 +14,7 @@ class Contrat extends Model
         'price',
         'boxe_id',
         'content',
+        'monthly_price',
         'locataire_id',
         'templatecontrat_id',
         'user_id'

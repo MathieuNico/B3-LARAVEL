@@ -7,7 +7,7 @@ use App\Models\Contrat;
 use App\Models\Locataire;
 use App\Models\Boxe;
 use App\Models\TemplateContrat;
-
+use Barryvdh\DomPDF\Facade\Pdf; 
 class ContratController extends Controller
 {
     /**
@@ -41,7 +41,7 @@ class ContratController extends Controller
         $locataire = Locataire::find($request->get('locataire_id'));
         $boxe = Boxe::find($request->get('boxe_id'));
         $templatecontrat = TemplateContrat::find($request->get('templatecontrat_id'));
-
+        $boxe->locataire_id = $locataire->id;
         
         $templateContent = json_decode($templatecontrat->content, true);
 
@@ -74,6 +74,7 @@ class ContratController extends Controller
         $contrat->end_date = $request->get('end_date');
         $contrat->name = $request->get('name');
         $contrat->locataire_id = $request->get('locataire_id');
+        $contrat->monthly_price = $request->get('monthly_price');
         $contrat->boxe_id = $request->get('boxe_id');
         $contrat->user_id = auth()->id();
         $contrat->templatecontrat_id = $request->get('templatecontrat_id');
@@ -82,11 +83,9 @@ class ContratController extends Controller
         $contrat->content = json_encode($templateContent);
 
         $contrat->save();
+        $boxe->save();
 
-        return response()->json([
-            'message' => 'Contrat créé avec succès',
-            'contrat' => $contrat
-        ]);
+        return redirect()->route('contrats.index'); 
     }
 
 
@@ -128,5 +127,17 @@ class ContratController extends Controller
         $contrat->delete();
 
         return redirect()->route('contrats.index');
+    }
+
+
+    public function export($id){
+        // Récupérer le contrat avec les relations nécessaires
+    $contrat = Contrat::with('locataire')->findOrFail($id);
+
+    // Charger la vue avec les données
+    $pdf = Pdf::loadView('contrats.pdf', compact('contrat'));
+
+    // Télécharger le fichier PDF
+    return $pdf->download("contrat_{$contrat->id}.pdf");
     }
 }
