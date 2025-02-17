@@ -7,6 +7,7 @@ use App\Http\Controllers\LocataireController;
 use App\Http\Controllers\ContratController;
 use App\Http\Controllers\TemplateContratController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\TaxController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,7 +65,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/bills/store', [BillController::class, 'store'])->name('bills.store');
     Route::put('/bills/{id}', [BillController::class, 'update'])->name('bills.update');
     Route::delete('/bills/{id}', [BillController::class, 'destroy'])->name('bills.destroy');
+
+    // Impots
+    Route::get('/tax/index',[TaxController::class,'index'])->name('tax.index');
+    Route::get('tax/calculate',[TaxController::class, 'calculate'])->name('tax.calculate');
 });
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';

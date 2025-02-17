@@ -140,4 +140,7 @@ class ContratController extends Controller
     // Télécharger le fichier PDF
     return $pdf->download("contrat_{$contrat->id}.pdf");
     }
+
+    
+
 }

@@ -35,6 +35,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('bills.index')}}">Factures</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('tax.index')}}">Impots</a>
+          </li>
         </ul>
     
       </div>

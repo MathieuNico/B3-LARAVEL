@@ -13,7 +13,7 @@ class Bills extends Model
         'payment_date',
         'paiement_montant',
         'period_number',
-        'contrat_id',
+        'contrat_id',   
 
     ];
 
