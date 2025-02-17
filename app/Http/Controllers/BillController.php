@@ -45,7 +45,7 @@ class BillController extends Controller
         $bill->name = $request->get('name');
         $bill->payment_date = now();
         $bill->paiement_montant = $request->get('monthly_price');
-        $bill->period_number =  Carbon::parse($contrat->start_date)->diffInmonths(now());
+        $bill->period_number =  Carbon::parse($contrat->start_date)->diffInmonths($contrat->end_date);
         $bill->contrat_id = $contrat->id;
         $bill->save();
         return redirect()->route('bills.index');
