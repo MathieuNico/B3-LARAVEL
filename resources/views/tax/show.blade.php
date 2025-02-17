@@ -8,5 +8,6 @@
     @else
         <p>Tu es un régime réél, tu dois inscrire {{$revenutotal}} case 4 BA déclaration n°2044</p>
         <p> Sur quel montant sera tu imposé ? {{$revenutotal}}</p>
+        <p>voila</p>
     @endif
 </div>
