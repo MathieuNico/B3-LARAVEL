@@ -140,8 +140,6 @@ class ContratController extends Controller
     return $pdf->download("contrat_{$contrat->id}.pdf");
     }
 
-    public function tax(){
-        $contrat = Contrat::all()->where('user_id', auth()->id());
-        $temps_contrat = $contrat->
-    }
+    
+
 }

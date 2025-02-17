@@ -2,5 +2,5 @@
 </x-nav-link>
 
 <div class="container">
-    <form action="{{route('tax.calculate')}}"></form>
+    <a href="{{route('tax.calculate')}}">Calculer</a>
 </div>
