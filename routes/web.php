@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     // Impots
     Route::get('/tax/index',[TaxController::class,'index'])->name('tax.index');
     Route::get('tax/calculate',[TaxController::class, 'calculate'])->name('tax.calculate');
+    Route::get('tax/pdf',[TaxController::class, 'export'])->name('tax.pdf');    
 });
 
 

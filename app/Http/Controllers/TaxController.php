@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Bills;
 use App\Models\Contrat;
 use App\Http\Controllers\BillController;
+use Barryvdh\DomPDF\Facade\Pdf; 
+use Carbon\Carbon;
 
 
 class TaxController extends Controller
@@ -13,18 +15,20 @@ class TaxController extends Controller
 
     public function calculate()
     {
-        $bills = Bills::whereHas('contrat', function ($query) {
-            $query->where('user_id', auth()->id());
+        $current_year = Carbon::now()->year;
+        $bills = Bills::whereHas('contrat', function ($query) use ($current_year) {
+            $query->where('user_id', auth()->id())
+                    ->whereYear('payment_date', $current_year);
         })->get();
 
         $revenutotal = 0;
-        $taxController = new BillController(); // Instancier le contrôleur
+        $taxController = new BillController(); 
 
         foreach ($bills as $bill) {
-            $revenutotal += $taxController->tax($bill->id); // Appeler la méthode tax()
+            $revenutotal += $taxController->tax($bill->id);
         }
 
-        return view('tax.show', compact('revenutotal'));
+        return $revenutotal;
     }
 
 
@@ -32,6 +36,19 @@ class TaxController extends Controller
     public function index(){
 
         return view('tax.index');
+
+    }
+
+    public function export(){
+        $bills = new TaxController();
+        $revenutotal = 0;
+
+        $revenutotal = $this->calculate();
+        
+        $pdf = Pdf::loadView('tax.pdf', compact('revenutotal'));
+
+        // Télécharger le fichier PDF
+        return $pdf->download("Impots.pdf");
 
     }
 }

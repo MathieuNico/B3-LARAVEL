@@ -5,7 +5,6 @@
 <div class="container">
     <h2>Modifier un Contrat</h2>
 
-    <!-- Formulaire pour envoyer le modèle -->
     <form id="contract-form" action="{{ route('contrats.update', $contrats->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -14,7 +13,7 @@
 
         <div id="editor-container"></div>
 
-        <!-- Champ caché pour stocker le contenu JSON -->
+    
         <input type="hidden" name="content" id="content-input">
 
         <button type="submit">Sauvegarder le Modèle</button>

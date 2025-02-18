@@ -107,7 +107,7 @@ class BillController extends Controller
 
     public function tax($id){
         $bills = Bills::findOrFail($id);
-        $revenu_total = $bills->period_number*$bills->paiement_montant;
+        $revenu_total = $bills->paiement_montant;
         return $revenu_total;
     }
 
