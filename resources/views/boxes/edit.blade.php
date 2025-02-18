@@ -17,28 +17,28 @@
           <label for="Ville" class="form-label">Ville</label>
           <div class="input-group mb-2">
               <div class="input-group-text"><i class="fa-solid fa-city"></i></div>
-              <input type="text" class="form-control" name="city" placeholder="Entrer la Ville" value={{$boxe->city}}>
+              <input type="text" class="form-control" name="city" placeholder="Entrer la Ville" value="{{$boxe->city}}">
           </div>
         </div>
         <div class="mb-3">
           <label for="Adresse" class="form-label">Adresse</label>
           <div class="input-group mb-2">
               <div class="input-group-text"><i class="fa-solid fa-location-dot"></i></div>
-              <input type="text" class="form-control" name="address" placeholder="Entrer une adresse" value={{$boxe->address}}>
+              <input type="text" class="form-control" name="address" placeholder="Entrer une adresse" value="{{$boxe->address}}">
           </div>
         </div>
         <div class="mb-3">
           <label for="Prix" class="form-label">Prix</label>
           <div class="input-group mb-2">
             <div class="input-group-text">€</div>
-            <input type="text" class="form-control" name="price" placeholder="Entrer le prix du box" value={{$boxe->price}}>
+            <input type="text" class="form-control" name="price" placeholder="Entrer le prix du box" value="{{$boxe->price}}">
           </div>
         </div>
         <div class="mb-3">
           <label for="Code Postal" class="form-label">Code Postal</label>
           <div class="input-group mb-2">
               <div class="input-group-text"><i class="fa-solid fa-signs-post"></i></div>
-              <input type="text" class="form-control" name="postal_code" placeholder="Entrer un code postal" value={{$boxe->postal_code}}>
+              <input type="text" class="form-control" name="postal_code" placeholder="Entrer un code postal" value="{{$boxe->postal_code}}">
           </div>
         </div>
         <div class="mb-3">
@@ -47,7 +47,7 @@
             <div class="input-group-text">
                 <i class="fa-solid fa-earth-americas"></i>
             </div>
-            <input type="text" class="form-control" name="country" placeholder="Entrer le pays" value={{$boxe->country}}>
+            <input type="text" class="form-control" name="country" placeholder="Entrer le pays" value="{{$boxe->country}}">
           </div>
         </div>
        
