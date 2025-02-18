@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/contrats', [ContratController::class, 'index'])->name('contrats.index');
     Route::get('/contrats/{id}/edit', [ContratController::class, 'edit'])->name('contrats.edit');
     Route::get('/contrats/{id}/show', [ContratController::class, 'show'])->name('contrats.show');
+    Route::get('/contrats/{id}/export', [ContratController::class, 'export'])->name('contrats.export.pdf');
     Route::post('/contrats/store', [ContratController::class, 'store'])->name('contrats.store');
     Route::put('/contrats/{id}', [ContratController::class, 'update'])->name('contrats.update');
     Route::delete('/contrats/{id}', [ContratController::class, 'destroy'])->name('contrats.destroy');

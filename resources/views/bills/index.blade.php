@@ -11,6 +11,8 @@
             <tr>
                 <th scope="row" class="text-center">N°</th>
                 <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Montant</th>
+                <th scope="col" class="text-center">Date de paiement</th>
                 <th scope="col" class="text-center">Supprimer</th>
             </tr>
             </thead>
@@ -20,6 +22,18 @@
                 <tr>
                     <th scope="row" class="text-center">{{$bill->id}}</th>
                     <td class="text-center">{{$bill->name}}</td>
+                    <td class="text-center">{{$bill->paiement_montant}}</td>
+                    <form action="{{route('bills.update', $bill->id)}}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <td class="text-center d-flex">
+                            <div class="input-group">
+                                <input type="text" id="timestamp" name="start_date" class="form-control" required value="{{$bill->payment_date}}">
+                                <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                            </div>
+                            <button type="submit">Sauvegarder</button>
+                        </td>
+                    </form>
                     <form action="{{route('contrats.destroy', $bill->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -31,3 +45,13 @@
         </table>
     </div>
 </div>
+
+
+<script>
+    flatpickr("#timestamp", {
+        enableTime: true,
+        dateFormat: "Y-m-d", 
+        time_24hr: true, 
+        theme: "material_blue", 
+    });
+  </script>
