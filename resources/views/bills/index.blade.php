@@ -4,7 +4,11 @@
 <div class="container">
     <div class="col-md-12">
         <div class="d-flex justify-content-between mt-3">
-            <a href="{{route('bills.create')}}" class="btn btn-success">Créer une facture</a>
+            <form action="{{route('bills.store')}}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-success">Génerer facture une facture</button>
+            </form>
           </div>
         <table class="table table-hover- table-bordered mt-3">
             <thead>
@@ -34,7 +38,7 @@
                             <button type="submit">Sauvegarder</button>
                         </td>
                     </form>
-                    <form action="{{route('contrats.destroy', $bill->id)}}" method="POST">
+                    <form action="{{route('bills.destroy', $bill->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <td class="text-center"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></td>

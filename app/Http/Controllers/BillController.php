@@ -17,10 +17,15 @@ class BillController extends Controller
      */
     public function index()
     {
+        $bills = Bills::whereHas('contrat', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+        ->whereNull('payment_date') // Ajout ici pour être dans le même filtre
+        ->get();
+    
+    
         return view('bills.index', [
-            'bills' => Bills::whereHas('contrat', function ($query) {
-                $query->where('user_id', auth()->id());
-            })->get()
+            'bills' => $bills
         ]);
     }
 
@@ -39,15 +44,20 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {   
-        $contrat = Contrat::find($request->get('contrat_id'));
         $current_date = Carbon::now();
-        $bill = new Bills();
-        $bill->name = $request->get('name');
-        $bill->payment_date = now();
-        $bill->paiement_montant = $request->get('monthly_price');
-        $bill->period_number =(int)  Carbon::parse($contrat->start_date)->diffInmonths($contrat->end_date);
-        $bill->contrat_id = $contrat->id;
-        $bill->save();
+
+        $contrats = Contrat::where('user_id', auth()->id())
+                        ->where('start_date', '<=', $current_date)
+                        ->where('end_date', '>=', $current_date)
+                        ->get();
+        foreach($contrats as $contrat){
+            $bill = new Bills();
+            $bill->name = $contrat->name;
+            $bill->paiement_montant = $contrat->monthly_price;
+            $bill->period_number =(int)  Carbon::parse($contrat->start_date)->diffInmonths($current_date);
+            $bill->contrat_id = $contrat->id;
+            $bill->save();
+        }
         return redirect()->route('bills.index');
 
     }
@@ -56,7 +66,7 @@ class BillController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    
+
     {
         $bill = Bill::findOrFail($id);
         $bill->delete();
@@ -88,7 +98,10 @@ class BillController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+    {   
+        $bill = Bills::findOrFail($id);
+        $bill->delete();
+        return redirect()->route('bills.index');
         
     }
 

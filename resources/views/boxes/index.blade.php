@@ -5,6 +5,7 @@
 <div class="container">
     <div class="col-md-12">
         <div class="d-flex justify-content-between mt-3">
+      
           <a href="{{route('boxes.create')}}" class="btn btn-success">Créer une boxe</a>
         </div>
      

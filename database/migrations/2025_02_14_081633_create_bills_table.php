@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->date('payment_date');
+            $table->date('payment_date')->nullable();
             $table->float('paiement_montant');
             $table->integer('period_number');
             $table->unsignedBigInteger('contrat_id');
-            $table->foreign('contrat_id')->references('id')->on('contrats');
+            $table->foreign('contrat_id')->references('id')->on('contrats')->onDelete('cascade');
         });
     }
 
