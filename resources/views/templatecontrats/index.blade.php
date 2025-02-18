@@ -7,7 +7,7 @@
       <div class="d-flex justify-content-between mt-3">
         <a href="{{route('templatecontrats.create')}}" class="btn btn-success">Créer un modèle de contrat</a>
       </div>
-      <table class="table ">
+      <table class="table">
           <thead>
             <tr>
               <th scope="row" class="text-center">N°</th>
@@ -28,7 +28,7 @@
                       <a href="{{route('templatecontrats.edit', $template_contrats->id)}}"class="btn btn-warning">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
-                      <form action="{{route('templatecontrats.destroy', $template_contrats->id)}}" method="POST">
+                      <form action="{{route('templatecontrats.destroy', $template_contrats->id)}}" class="d-flex align-items-center m-0" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">

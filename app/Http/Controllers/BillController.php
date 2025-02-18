@@ -110,4 +110,12 @@ class BillController extends Controller
         $revenu_total = $bills->period_number*$bills->paiement_montant;
         return $revenu_total;
     }
+
+    public function historique(){
+        return view('bills.historique',[
+            'bills' => Bills::whereHas('contrat', function ($query) {
+                $query->where('user_id', auth()->id());
+            })->get()
+        ]);
+    }
 }

@@ -130,17 +130,30 @@ class ContratController extends Controller
     }
 
 
-    public function export($id){
-        // Récupérer le contrat avec les relations nécessaires
-    $contrat = Contrat::with('locataire')->findOrFail($id);
+    public function export($id)
+    {
+        // Récupérer le contrat avec la relation locataire
+        $contrat = Contrat::with('locataire')->findOrFail($id);
 
-    // Charger la vue avec les données
-    $pdf = Pdf::loadView('contrats.pdf', compact('contrat'));
+        // Décoder le contenu JSON en texte brut
+        $decodedContent = json_decode($contrat->content, true);
+        $text = '';
+        if (isset($decodedContent['ops'])) {
+            foreach ($decodedContent['ops'] as $op) {
+                if (isset($op['insert'])) {
+                    $text .= $op['insert'];
+                }
+            }
+        }
 
-    // Télécharger le fichier PDF
-    return $pdf->download("contrat_{$contrat->id}.pdf");
+        // Remplacer le contenu du contrat par le texte brut décodé
+        $contrat->content = nl2br(e($text)); // Ajout des sauts de ligne et échappement sécurisé
+
+        // Charger la vue avec les données modifiées
+        $pdf = Pdf::loadView('contrats.pdf', compact('contrat'));
+
+        // Télécharger le fichier PDF
+        return $pdf->download("contrat_{$contrat->id}.pdf");
     }
-
-    
 
 }
