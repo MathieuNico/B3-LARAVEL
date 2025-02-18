@@ -30,16 +30,6 @@
         <label for="Pays" class="form-label">Pays</label>
         <input type="text" class="form-control" name="country" placeholder="Entrer le pays">
       </div>
-      <div class="col-auto my-1">
-        <label class="mr-sm-2" for="inlineFormCustomSelect">Locataire du box</label>
-        <select class="form-select" name="locataire_id">
-          <option selected>Choose...</option>
-          @foreach($locataires as $locataire){
-            <option value="{{$locataire->id}}">{{$locataire->lastname}}, {{$locataire->firstname}}</option>
-          }
-          @endforeach
-        </select>
-      </div>
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
   
     </form>

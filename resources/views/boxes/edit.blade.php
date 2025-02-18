@@ -50,25 +50,8 @@
             <input type="text" class="form-control" name="country" placeholder="Entrer le pays" value={{$boxe->country}}>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="Pays" class="form-label">Locataire</label>
-          <div class="input-group mb-2">
-            <div class="input-group-text">
-              <i class="fa-solid fa-person"></i>
-            </div>
-            <select class="form-select" name="locataire_id">
-              <option disabled>Choose...</option>
-              @foreach($locataires as $locataire)
-                  <option value="{{ $locataire->id }}" 
-                      {{ (old('locataire_id', $boxe->locataire_id ?? '') == $locataire->id) ? 'selected' : '' }}>
-                      {{ $locataire->lastname }}, {{ $locataire->firstname }}
-                  </option>
-              @endforeach
-            </select>
-          
-            {{-- <input type="text" class="form-control" name="country" placeholder="Entrer le pays" value={{$boxe->country}}> --}}
-          </div>
-        </div>
+       
+        
     
         <button type="submit" class="btn btn-primary">Modifier</button>
       </form>
