@@ -57,7 +57,11 @@ class BillController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $bill = Bills::findOrFail($id);
+        $bill->payment_date = $request->get('start_date');
+        $bill->save();
+
+        return redirect()->route('bills.index');
     }
 
     /**
