@@ -50,11 +50,13 @@ class BillController extends Controller
                         ->where('start_date', '<=', $current_date)
                         ->where('end_date', '>=', $current_date)
                         ->get();
+
+    
         foreach($contrats as $contrat){
             $bill = new Bills();
             $bill->name = $contrat->name;
             $bill->paiement_montant = $contrat->monthly_price;
-            $bill->period_number =(int)  Carbon::parse($contrat->start_date)->diffInmonths($current_date);
+            $bill->period_number =(int)  Carbon::parse($contrat->start_date)->diffInmonths($current_date) + 1;
             $bill->contrat_id = $contrat->id;
             $bill->save();
         }

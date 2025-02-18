@@ -7,7 +7,7 @@
             <form action="{{route('bills.store')}}" method="POST">
                 @csrf
                 @method('POST')
-                <button type="submit" class="btn btn-success">Génerer facture une facture</button>
+                <button type="submit" class="btn btn-success">Génerer facture</button>
             </form>
             <a href="{{route('bills.historique')}}" class="btn btn-info">Voir historique de facture</a>
           </div>

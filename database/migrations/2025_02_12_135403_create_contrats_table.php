@@ -31,9 +31,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('boxe_id')->nullable();
-            $table->foreign('boxe_id')->references('id')->on('boxes');
+            $table->foreign('boxe_id')->references('id')->on('boxes')->onDelete('cascade');
             $table->unsignedBigInteger('locataire_id')->nullable();
-            $table->foreign('locataire_id')->references('id')->on('locataires');
+            $table->foreign('locataire_id')->references('id')->on('locataires')->nullOnDelete();
             $table->unsignedBigInteger('templatecontrat_id')->nullable();
             $table->foreign('templatecontrat_id')->references('id')->on('template_contrats')->constrained('template_contrats')->nullOnDelete();;
 

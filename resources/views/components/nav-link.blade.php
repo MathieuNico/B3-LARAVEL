@@ -37,6 +37,14 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('tax.index')}}">Impots</a>
           </li>
+          <li class="nav-item"> 
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn-btn danger ">
+                <i class="bi bi-box-arrow-left"></i>
+              </button>          
+            </form>
+          </li>
         </ul>
     
       </div>
