@@ -56,6 +56,7 @@ class BillController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
+    
     {
         $bill = Bill::findOrFail($id);
         $bill->delete();
