@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/boxes/{id}/edit', [BoxeController::class, 'edit'])->name('boxes.edit');
     Route::post('/boxes', [BoxeController::class, 'store'])->name('boxes.store');
     Route::put('/boxes/{id}', [BoxeController::class, 'update'])->name('boxes.update');
+    // Peut-être sur toutes mes routes delete un risque de problème suppression avec clés étrangère malgré le fait que j'ai mis du oncascade sur certains. 
     Route::delete('/boxes/{id}', [BoxeController::class, 'destroy'])->name('boxes.destroy');
 
     // Locataires
